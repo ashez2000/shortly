@@ -1,0 +1,23 @@
+{
+  "name": "shortly",
+  "version": "1.0.0",
+  "description": "A URL shortener built with Node.js and Express.js",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "node src/main.js"
+  },
+  "dependencies": {
+    "express": "^4.18.1"
+  },
+  "keywords": [],
+  "author": "Aswin Gangadharan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ashez2000/shortly/issues"
+  },
+  "homepage": "https://github.com/ashez2000/shortly#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ashez2000/shortly.git"
+  }
+}
