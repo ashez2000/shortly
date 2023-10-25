@@ -1,12 +1,28 @@
 import express from 'express'
 import morgan from 'morgan'
+import cors from 'cors'
+import helmet from 'helmet'
+import { rateLimit } from 'express-rate-limit'
 import { nanoid } from 'nanoid'
 
 import { ShortUrl } from './model.js'
 
 const app = express()
+
+app.use(cors())
+app.use(helmet())
 app.use(express.json())
 app.use(morgan('dev'))
+app.use(
+  rateLimit({
+    windowMs: 10 * 60 * 1000, // 10 minutes,
+    limit: 30,
+    standardHeaders: 'draft-7',
+    handler: (req, res) => {
+      res.status(429).json({ message: 'Too many request' })
+    },
+  })
+)
 
 app.get('/', (req, res) => res.send('Hello, world!'))
 
