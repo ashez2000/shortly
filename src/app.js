@@ -3,6 +3,7 @@ import morgan from 'morgan'
 import cors from 'cors'
 import helmet from 'helmet'
 import { rateLimit } from 'express-rate-limit'
+import 'express-async-errors'
 
 import routes from './routes.js'
 

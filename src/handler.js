@@ -1,13 +1,19 @@
+import { z } from 'zod'
 import { nanoid } from 'nanoid'
 import db from './db.js'
 
 export const shorten = async (req, res) => {
-  const link = req.body.link
+  const result = z.string().url().safeParse(req.body.link)
+  if (result.success === false) {
+    res.status(400).json({ message: 'Provide a valid link' })
+    return
+  }
+
   const shortCode = nanoid(7)
 
   await db.shortLink.create({
     data: {
-      link,
+      link: result.data,
       shortCode,
     },
   })
