@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "nodemon src/main.js"
+    "dev": "nodemon src/main.js",
+    "test": "vitest"
   },
   "dependencies": {
     "@prisma/client": "^5.7.1",
@@ -17,6 +18,8 @@
   },
   "devDependencies": {
     "nodemon": "^3.0.1",
-    "prisma": "^5.7.1"
+    "prisma": "^5.7.1",
+    "supertest": "^6.3.3",
+    "vitest": "^1.1.3"
   }
 }
