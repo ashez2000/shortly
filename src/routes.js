@@ -5,6 +5,6 @@ const routes = Router()
 
 routes.get('/', (req, res) => res.send('OK'))
 routes.post('/shorten', shorten)
-routes.get('/:shortCode', redirect)
+routes.get('/:shortcode', redirect)
 
 export default routes

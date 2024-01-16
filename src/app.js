@@ -33,6 +33,7 @@ app.use((req, res) => {
 })
 
 app.use((err, req, res, next) => {
+  console.error(err)
   res.status(500).json({ message: 'Internal server error' })
 })
 

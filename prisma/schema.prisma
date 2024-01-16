@@ -10,5 +10,5 @@ datasource db {
 model ShortLink {
   id        String @id @default(uuid())
   link      String
-  shortCode String @unique
+  shortcode String @unique
 }

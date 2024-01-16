@@ -1,6 +1,6 @@
 import { z } from 'zod'
 import { nanoid } from 'nanoid'
-import db from './db.js'
+import { createShortLink, findShortLink } from './repository/shortlink.js'
 
 export const shorten = async (req, res) => {
   const result = z.string().url().safeParse(req.body.link)
@@ -9,24 +9,15 @@ export const shorten = async (req, res) => {
     return
   }
 
-  const shortCode = nanoid(7)
+  const shortcode = nanoid(7)
+  await createShortLink(result.data, shortcode)
 
-  await db.shortLink.create({
-    data: {
-      link: result.data,
-      shortCode,
-    },
-  })
-
-  res.status(201).json({ shortCode })
+  res.status(201).json({ shortcode })
 }
 
 export const redirect = async (req, res) => {
-  const shortCode = req.params.shortCode
-  const shortLink = await db.shortLink.findUnique({
-    where: { shortCode },
-  })
-
+  const shortcode = req.params.shortcode
+  const shortLink = await findShortLink(shortcode)
   if (shortLink === null) {
     res.status(404).json({ message: 'link not found' })
     return

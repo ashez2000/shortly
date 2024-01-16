@@ -12,7 +12,7 @@ test('POST /shorten', async () => {
     .send({ link: 'https://www.google.com' })
 
   expect(res.status).toBe(201)
-  expect(res.body.shortCode.length).toBe(7)
+  expect(res.body.shortcode.length).toBe(7)
 })
 
 test('POST /shorten (no body)', async () => {
