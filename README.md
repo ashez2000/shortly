@@ -1,1 +1,3 @@
-# url-shortener
+# shortly
+
+Simple URL shortner api
